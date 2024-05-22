@@ -7,6 +7,11 @@
 }
 
 
+.red-dark {
+    color-scheme: dark;
+}
+
+
 @layer utilities {
   
 }
