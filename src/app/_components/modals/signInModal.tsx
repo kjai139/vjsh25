@@ -35,20 +35,24 @@ export default function SignInModal ({isModalOpen, setIsModalOpen}:SignInModalPr
 
     return (
           
-        <motion.dialog {...animateProps} className="flex flex-col backdrop:bg-inherit p-4" ref={dialog}>
-            <div className="bg-overlay p-4 flex flex-col gap-4">
-            <div className="flex justify-end">
-            <Button size="sm" aria-label="close sign in modal" isIconOnly radius="full" onPress={() => setIsModalOpen(false)} className="text-default-500">X</Button>
+        <motion.dialog {...animateProps} className="flex flex-col backdrop:bg-background bg-content1 border-secondary border-2 p-4 rounded shadow" ref={dialog}>
+             <div className="flex justify-end">
+                <Button size="sm" aria-label="close sign in modal" isIconOnly radius="full" onPress={() => setIsModalOpen(false)} className="text-default-500">X</Button>
             </div>
-            <h1 className="sm:text-lg">Log in</h1>
+            <div className="p-4 flex flex-col gap-4 sm:max-w-[450px]">
+           
+            <div className="flex flex-col gap-4">
+            <h1 className="sm:text-lg text-center">Log in</h1>
             
             
             <form method="dialog" className="flex flex-col gap-4">
-                <Input radius="none" label='Username' type="text"></Input>
-                <Input radius="none" label='Password' type="password"></Input>
+                <Input aria-label="username field" radius="none" label='Username' type="text"></Input>
+                <Input aria-label="password field" radius="none" label='Password' type="password"></Input>
+                <Button color="primary">Login</Button>
 
 
             </form>
+            </div>
             </div>
             
             

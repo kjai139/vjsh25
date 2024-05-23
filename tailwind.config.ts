@@ -55,7 +55,9 @@ const config: Config = {
         extend: 'dark',
         colors: {
           default: {
-            
+            //muted
+            DEFAULT: 'hsl(0 0% 15%)',
+            foreground: 'hsl(240 5% 64.9%)'
           },
           primary: {
             DEFAULT: 'hsl(346.8 77.2% 49.8%)',
@@ -79,28 +81,30 @@ const config: Config = {
             foreground: 'hsl(0 0% 95%)',
             
           },
-          //muted && accent 500
-          content2: {
-            DEFAULT: 'hsl(0 0% 15%)',
-            foreground: 'hsl(240 5% 64.9%)',
-            500: 'hsl(12 6.5% 15.1%)'
-          },
-          //border && input
-          content3: {
-            DEFAULT: 'hsl(240 5.9% 90%)'
-          },
-          //ring && border + input 500
-          content4: {
-            DEFAULT: 'hsl(346.8 77.2% 49.8%)',
-            500: 'hsl(240 3.7% 15.9%)'
-          },
-          divider: {
-            DEFAULT: 'hsl(12 6.5% 15.1%)'
-          },
-          focus: 'hsl(240 3.7% 15.9%)',
           //popover
-          overlay: {
+          content2: {
             DEFAULT: 'hsl(0 0% 9%)',
+            foreground: 'hsl(0 0% 95%)',
+    
+          },
+
+          //accent
+          content3: {
+            DEFAULT: 'hsl(12 6.5% 15.1%)',
+            foreground:'hsl(0 0% 98%)'
+          },
+          //input
+          content4: {
+            DEFAULT: 'hsl(240 3.7% 15.9%)',
+          },
+          //same as muted
+          divider: {
+            DEFAULT: 'hsl( 0 0% 15%)'
+        },
+          
+          //same as secondary
+          overlay: {
+            DEFAULT: 'hsl(240 3.7% 15.9%)',
             foreground: 'hsl(0 0% 95%)'
           },
           
