@@ -1,6 +1,7 @@
 import { Button, Input } from "@nextui-org/react";
 import { useLayoutEffect, useRef } from "react";
 import { animate, motion } from "framer-motion";
+import { GithubSignIn } from "../buttons/githubBtn";
 
 interface SignInModalProps {
     isModalOpen: boolean,
@@ -52,6 +53,7 @@ export default function SignInModal ({isModalOpen, setIsModalOpen}:SignInModalPr
 
 
             </form>
+            <GithubSignIn></GithubSignIn>
             </div>
             </div>
             

@@ -1,17 +1,14 @@
-import { signIn } from "@/auth";
+
+import { signIn } from "next-auth/react"
 import { Button } from "@nextui-org/react";
+import { ImGithub } from "react-icons/im";
 
 
-export function SignIn() {
+export function GithubSignIn() {
     return (
-        <form
-        action={async () => {
-            "use server"
-            await signIn("github")
-        }}
-        >
-            <Button type="submit">Signin with Github</Button>
+       
+        <Button endContent={<ImGithub></ImGithub>} onPress={() => signIn()}>Signin with Github</Button>
 
-        </form>
+        
     )
 }
