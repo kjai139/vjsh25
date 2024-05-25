@@ -1,12 +1,16 @@
 import {  Navbar,   NavbarBrand,   NavbarContent,   NavbarItem,   NavbarMenuToggle,  NavbarMenu,  NavbarMenuItem} from "@nextui-org/navbar";
 
 import SignInBtn from "../buttons/signInBtn";
+import { useEffect } from "react";
+import AvatarDropdown from "../dropdown/avatar";
 
 interface MenuItemsTypes {
   name:string,
 }
 
-export default function TopNav () {
+export default function TopNav ({session}) {
+
+    console.log('session:', session)
 
     const menuItems:MenuItemsTypes[] = [
         {
@@ -16,6 +20,8 @@ export default function TopNav () {
             name: 'Item 2 🪨'
         }
     ]
+
+   
 
 
     return (
@@ -35,7 +41,12 @@ export default function TopNav () {
             </NavbarContent>
             <NavbarContent justify="end">
                 <NavbarItem>
-                <SignInBtn></SignInBtn>
+                    {
+                        session?.user ?
+                        <AvatarDropdown session={session}></AvatarDropdown> : 
+                        <SignInBtn></SignInBtn>
+                    }
+                
                 </NavbarItem>
             </NavbarContent>
             <NavbarMenu>

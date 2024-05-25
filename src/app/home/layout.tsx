@@ -1,3 +1,4 @@
+import Header from "../_components/ui/header"
 import TopNav from "../_components/ui/topNav"
 
 
@@ -6,7 +7,7 @@ export default function HomeLayout({children}: {
 }) {
     return (
         <section>
-            <TopNav></TopNav>
+            <Header></Header>
             {children}
         </section>
     )

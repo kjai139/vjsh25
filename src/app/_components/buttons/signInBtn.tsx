@@ -7,10 +7,11 @@ import SignInModal from "../modals/signInModal"
 export default function SignInBtn () {
 
     const [isModalOpen, setIsModalOpen] = useState(false)
+    
 
-    useEffect(() => {
-        console.log(isModalOpen)
-    }, [isModalOpen])
+    
+
+    
 
     return (
         <>
