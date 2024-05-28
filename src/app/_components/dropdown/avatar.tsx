@@ -1,5 +1,5 @@
 "use client"
-import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
+import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Link } from "@nextui-org/react";
 import { signOut } from "next-auth/react";
 
 
@@ -23,6 +23,12 @@ export default function AvatarDropdown ({session}) {
                     </Avatar>
                 </DropdownTrigger>
                 <DropdownMenu onAction={handleFunction} aria-label="User Profile Actions">
+                    <DropdownItem textValue="Link to Dashboard" aria-label="Link to Dashboard">
+                        <Link href="/dashboard">
+                            Dashboard
+                        </Link>
+
+                    </DropdownItem>
                     <DropdownItem key="signout" textValue="Sign out button" aria-label="Sign out button">
                         Sign Out
                     </DropdownItem>

@@ -2,6 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "./auth";
 
 
+export const config = {
+    matcher: [
+        '/((?!_next/static|_next/image|favicon.ico).*)'
+    ]
+}
+
+
 
 export async function middleware(request:NextRequest) {
     const session = await auth()

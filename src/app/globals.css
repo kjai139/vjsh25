@@ -11,6 +11,26 @@
     color-scheme: dark;
 }
 
+.hbg {
+    filter: blur(55px);
+}
+
+.wrapmw {
+    max-width: 1124px;
+    width:100%;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.tshadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 
 @layer utilities {
   

@@ -21,7 +21,7 @@ const config: Config = {
             DEFAULT: 'hsl(346.8 77.2% 49.8%)',
             foreground: 'hsl(240 10% 3.9%)'
           },
-          foreground: 'hsl(240 10% 3.9%);',
+          foreground: 'hsl(240 10% 3.9%)',
           background: 'hsl(0 0% 100%)',
           secondary: {
             DEFAULT:'hsl(240 4.8% 95.9%)',

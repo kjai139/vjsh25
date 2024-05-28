@@ -1,3 +1,4 @@
+import HomeHero from "../_components/card/hero";
 
 
 
@@ -5,8 +6,9 @@
 export default function Page () {
 
     return (
-        <div>
-            Homepage
-        </div>
+        <main>
+            <HomeHero></HomeHero>
+            
+        </main>
     )
 }
