@@ -12,7 +12,8 @@
 }
 
 .hbg {
-    filter: blur(55px);
+    /* filter: blur(55px); */
+    filter: brightness(.5);
 }
 
 .wrapmw {
@@ -20,10 +21,15 @@
     width:100%;
 }
 
+.igrid {
+    min-height: 160px;
+}
+
 main {
     display: flex;
-    justify-content: center;
+    align-items: center;
     width: 100%;
+    flex-direction: column;
 }
 
 
