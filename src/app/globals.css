@@ -16,6 +16,10 @@
     filter: brightness(.5);
 }
 
+a:hover {
+    cursor: pointer;
+}
+
 .wrapmw {
     max-width: 1124px;
     width:100%;
