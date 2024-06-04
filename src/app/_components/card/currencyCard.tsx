@@ -10,22 +10,26 @@ export default function CurrencyCard ({products}:CurrencyCardProps) {
 
     
     return (
-        <div className="w-full">
+        <div className="w-full p-8 flex flex-col">
+            <span className="text-2xl mb-4">
+                <h1>Purchase Coins</h1>
+            </span>
             <div className="c-grid gap-4">
             {products && products.data.map((item:any) => {
                 console.log(item)
                 return (
-                    <div key={item.id} className="grid gap-2">
-                        <Image src={item.images[0]} width={120}></Image>
+                    <div key={item.id} className="c-grid-card gap-2">
+                        <Image src={item.images[0]} height={120} width={120}></Image>
                         <div className="flex flex-col">
-                        <span>
+                        <span className="font-semibold">
                             {item.name}
                         </span>
                         <span>
-                            {item.default_price.unit_amount / 100}{item.default_price.currency.toUpperCase()}
+                            {item.default_price.unit_amount / 100} {item.default_price.currency.toUpperCase()}
                         </span>
-                        <BuyCoinsBtn priceId={item.default_price.id}></BuyCoinsBtn>
+                        
                         </div>
+                        <BuyCoinsBtn priceId={item.default_price.id}></BuyCoinsBtn>
                     </div>
                 )
             })}

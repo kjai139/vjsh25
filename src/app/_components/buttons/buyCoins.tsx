@@ -2,7 +2,7 @@
 
 import { Button } from "@nextui-org/react"
 import getStripe from "@/lib/stripe"
-import CheckoutResult from "../modals/checkoutResult"
+
 
 interface BuyCoinsBtnProps {
     priceId: string
@@ -16,7 +16,7 @@ export default function BuyCoinsBtn ({priceId}:BuyCoinsBtnProps) {
         const data = {
             priceId: priceId
         }
-        const stripe = await getStripe()
+        /* const stripe = await getStripe() */
 
         try {
             const response = await fetch('/api/stripe/checkoutSession', {
@@ -48,8 +48,8 @@ export default function BuyCoinsBtn ({priceId}:BuyCoinsBtnProps) {
 
     }
     return (
-        <>
-        <Button onPress={() => handleBuy(priceId)}>Buy</Button>
-        </>
+        <div>
+        <Button className="font-semibold" variant="solid" radius="sm" fullWidth onPress={() => handleBuy(priceId)}>Buy</Button>
+        </div>
     )
 }
