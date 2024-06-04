@@ -29,6 +29,11 @@ a:hover {
     min-height: 160px;
 }
 
+.c-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+
 main {
     display: flex;
     align-items: center;
