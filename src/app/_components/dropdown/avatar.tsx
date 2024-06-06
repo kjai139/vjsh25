@@ -1,10 +1,14 @@
 "use client"
 import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Link } from "@nextui-org/react";
 import { signOut } from "next-auth/react";
+import type { Session } from "next-auth";
 
 
+interface AvatarDropDownProps {
+    session: Session
+}
 
-export default function AvatarDropdown ({session}) {
+export default function AvatarDropdown ({session}:AvatarDropDownProps) {
 
     const handleFunction = (key:any) => {
         switch (key) {
@@ -18,7 +22,7 @@ export default function AvatarDropdown ({session}) {
         <div>
             <Dropdown>
                 <DropdownTrigger>
-                    <Avatar as="button" src={session.user.image} isBordered>
+                    <Avatar as="button" src={session.user && session.user.image!} isBordered>
 
                     </Avatar>
                 </DropdownTrigger>

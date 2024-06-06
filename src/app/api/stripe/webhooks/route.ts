@@ -3,7 +3,7 @@ import Stripe from "stripe";
 const stripe = require('stripe')(process.env.STRIPE_SECRET)
 
 export async function POST (request:NextRequest) {
-    const body = request.text()
+    const body = await request.text()
     const sig = request.headers.get("stripe-signature")
 
     let event:Stripe.Event

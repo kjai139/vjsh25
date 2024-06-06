@@ -19,13 +19,13 @@ export default function HomeHero () {
     return (
         <div className="flex wrapmw w-full">
             
-            <div className="relative p-4 w-full flex">
+            <div className="relative p-4 w-full flex h-[50vh]">
             <Image src={tutor} alt="background image of tutor" placeholder="blur" sizes="(max-width:640px) 100vw, 50vw" fill className="hbg" style={{
                 objectFit:'cover',
                 zIndex: '0',
             }}></Image>
             {/* left */}
-            <span className="relative z-10 flex flex-col justify-center">
+            <span className="relative z-10 flex flex-col justify-center p-4">
                 <div className="font-semibold flex flex-col justify-center gap-2">
                 <h1 className={`font-bold ${Mr.className} text-4xl tshadow mb-2`}>Get REAL output practices in any language</h1>
                 <div className="flex items-center gap-2 tshadow">
@@ -57,13 +57,13 @@ export default function HomeHero () {
             </span>
             {/* right */}
             <div className="p-4 flex-1 flex items-center">
-            <span className="relative flex-1">
+            {/* <span className="relative flex-1">
                 <Image src={memeface1} alt="Students studying" sizes="(max-width:640px) 100vw, 50vw" style={{
                     objectFit:'cover'
                 }}></Image>
                 
 
-            </span>
+            </span> */}
             </div>
             </div>
         </div>

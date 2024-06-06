@@ -3,12 +3,14 @@ import {  Navbar,   NavbarBrand,   NavbarContent,   NavbarItem,   NavbarMenuTogg
 import SignInBtn from "../buttons/signInBtn";
 import { useEffect } from "react";
 import AvatarDropdown from "../dropdown/avatar";
+import type { Session } from "next-auth";
+import CurrencyDropdown from "../dropdown/currency";
 
 interface MenuItemsTypes {
   name:string,
 }
 
-export default function TopNav ({session}) {
+export default function TopNav ({session}: {session: Session | null}) {
 
     console.log('session:', session)
 
@@ -40,6 +42,9 @@ export default function TopNav ({session}) {
 
             </NavbarContent>
             <NavbarContent justify="end">
+                <NavbarItem>
+                    <CurrencyDropdown session={session}></CurrencyDropdown>
+                </NavbarItem>
                 <NavbarItem>
                     {
                         session?.user ?
