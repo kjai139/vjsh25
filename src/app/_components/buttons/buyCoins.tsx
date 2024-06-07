@@ -39,7 +39,7 @@ export default function BuyCoinsBtn ({priceId}:BuyCoinsBtnProps) {
             }
         }
         
-
+        
 
         
 
@@ -49,7 +49,7 @@ export default function BuyCoinsBtn ({priceId}:BuyCoinsBtnProps) {
     }
     return (
         <div>
-        <Button className="font-semibold" variant="solid" radius="sm" fullWidth onPress={() => handleBuy(priceId)}>Buy</Button>
+        <Button className="font-semibold" variant="bordered" color="primary" radius="sm" fullWidth onPress={() => handleBuy(priceId)}>Buy</Button>
         </div>
     )
 }

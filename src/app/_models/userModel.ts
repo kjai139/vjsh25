@@ -11,6 +11,11 @@ const UserSchema = new Schema({
         type:String,
         unique:true
     },
+    email: {
+        type:String,
+        unique:true,
+        required:true
+    },
     coins: {
         type:Number,
         default: 0,

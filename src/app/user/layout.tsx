@@ -1,4 +1,5 @@
-import Header from "../_components/ui/header"
+import Header from "@/app/_components/ui/header"
+import SideNav from "../_components/ui/sideNav"
 
 export default function CurrencyLayout({children}: {
     children: React.ReactNode
@@ -6,7 +7,10 @@ export default function CurrencyLayout({children}: {
     return (
         <section>
             <Header></Header>
+            <div className="flex">
+            <SideNav></SideNav>
             {children}
+            </div>
         </section>
     )
 }

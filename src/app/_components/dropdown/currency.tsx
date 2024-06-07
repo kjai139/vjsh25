@@ -2,7 +2,7 @@
 import { Avatar, Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Link } from "@nextui-org/react";
 import { RiCoinsLine } from "react-icons/ri";
 import type { Session } from "next-auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 
@@ -16,6 +16,35 @@ export default function CurrencyDropdown ({session}:AvatarDropDownProps) {
 
     const [currencyAmt, setCurrencyAmt] = useState(0)
 
+    const getCurrency = async () => {
+        try {
+            const email = { email:session?.user?.email }
+            const response = await fetch(`/api/user/getCurrency`, {
+                method: 'POST',
+                body: JSON.stringify(email)
+
+            })
+
+            if (response.ok) {
+                const data = await response.json()
+                console.log('DATA:', data)
+            } else {
+                throw new Error('Something went wrong in getting a response')
+            }
+
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
+    useEffect(() => {
+        if (session) {
+            getCurrency()
+        } else {
+            setCurrencyAmt(0)
+        }
+    }, [])
+
 
 
     return (
@@ -28,7 +57,7 @@ export default function CurrencyDropdown ({session}:AvatarDropDownProps) {
                 </DropdownTrigger>
                 <DropdownMenu aria-label="User Currency Actions">
                     <DropdownItem textValue="Link to buy coins" aria-label="Link to Dashboard">
-                        <Link color="foreground" href="/currency" isDisabled={pathname === '/currency'}>
+                        <Link color="foreground" href="/user/currency" isDisabled={pathname === '/user/currency'}>
                             Buy coins
                         </Link>
 

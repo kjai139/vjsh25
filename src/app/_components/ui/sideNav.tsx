@@ -9,14 +9,14 @@ export default function SideNav () {
     return (
         <ul className="p-6 border-r-2 border-default">
             <li className="flex flex-col gap-2 font-semibold">
-                <Link isDisabled={pathname === '/dashboard'} color="foreground" isBlock href="/dashboard" className="flex gap-4 p-2">
+                <Link isDisabled={pathname === '/user/dashboard'} color="foreground" isBlock href="/user/dashboard" className="flex gap-4 p-2">
                 <MdOutlineSpaceDashboard></MdOutlineSpaceDashboard>
                 <span>
                     Dashboard
                 </span>
                 </Link>
 
-                <Link isDisabled={pathname === '/currency'} color="foreground" isBlock href="/currency" className="flex gap-4 p-2">
+                <Link isDisabled={pathname === '/user/currency'} color="foreground" isBlock href="/user/currency" className="flex gap-4 p-2">
                 <GrCurrency></GrCurrency>
                 <span>
                     Currency

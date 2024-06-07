@@ -43,7 +43,11 @@ export default function TopNav ({session}: {session: Session | null}) {
             </NavbarContent>
             <NavbarContent justify="end">
                 <NavbarItem>
+                    { session?.user ?
                     <CurrencyDropdown session={session}></CurrencyDropdown>
+                    :
+                    null
+                    }
                 </NavbarItem>
                 <NavbarItem>
                     {

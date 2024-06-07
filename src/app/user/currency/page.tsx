@@ -1,6 +1,5 @@
-import CurrencyCard from "../_components/card/currencyCard"
-import CheckoutResult from "../_components/modals/checkoutResult"
-import SideNav from "../_components/ui/sideNav"
+import CurrencyCard from "@/app/_components/card/currencyCard"
+import SideNav from "@/app/_components/ui/sideNav"
 const stripe = require('stripe')(process.env.STRIPE_SECRET)
 
 
@@ -24,8 +23,7 @@ export default async function CurrencyPage() {
     console.log(products)
 
     return (
-        <div className="flex">
-            <SideNav></SideNav>
+        <div className="flex w-full">
             <CurrencyCard products={products}></CurrencyCard>
             
         </div>

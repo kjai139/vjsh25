@@ -12,7 +12,7 @@ export default function InstructionGrid() {
     return (
         <div className="grid grid-cols-1 sm:grid-cols-3 w-full wrapmw mt-10">
             
-            <Link href="/dashboard" isBlock color="foreground" className="flex flex-col items-center justify-center igrid text-2xl">
+            <Link href="/user/currency" isBlock color="foreground" className="flex flex-col items-center justify-center igrid text-2xl">
                 <PiCoins className="flex-1" size={iconSize}></PiCoins>
                 <span className="flex-1">
                     1. Acquire some coins

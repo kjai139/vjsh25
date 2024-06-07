@@ -51,7 +51,7 @@ export default function HomeHero () {
                 </div>
                 </div>
                 <div className="mt-8">
-                    <Link as={Button} href="/dashboard" aria-label="Start now button" size="lg" radius="full" color="primary" className="font-semibold bg-primary text-foreground">Start now</Link>
+                    <Link as={Button} href="/user/dashboard" aria-label="Start now button" size="lg" radius="full" color="primary" className="font-semibold bg-primary text-foreground">Start now</Link>
                 </div>
                 
             </span>
