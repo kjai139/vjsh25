@@ -1,8 +1,10 @@
 "use client"
 
+import { updateCurrency } from "@/app/actions"
 import { Button } from "@nextui-org/react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
+
 
 export default function CheckoutResult () {
     const searchParams = useSearchParams()
@@ -14,10 +16,23 @@ export default function CheckoutResult () {
     const cancelled = searchParams.get('cancelled')
     const [message, setMessage] = useState('')
 
+    
+
+
+    
+
     useEffect(() => {
-        if (success) {
+        if (success && session_id) {
             setMessage('Payment Successful')
             console.log('Payment Success')
+
+            const updateCur = async () => {
+                const result = await updateCurrency(session_id)
+                console.log(result)
+
+            }
+            updateCur()
+
         } else if (cancelled) {
             setMessage('Payment Cancelled')
             console.log('Payment Cancelled')

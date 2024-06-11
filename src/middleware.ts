@@ -14,8 +14,17 @@ export async function middleware(request:NextRequest) {
     const session = await auth()
     if (!session?.user) {
         console.log('*** Middleware *** :User is not logged in')
+        if (request.nextUrl.pathname.startsWith('/api/stripe/checkoutSession')) {
+            return NextResponse.json({
+                message: 'User is not logged in'
+            }, {
+                status:401
+            })
+        }
+        
     } else {
         console.log(' *** Middleware:session *** :', session)
+
     }
     console.log('Req for:', request.nextUrl.pathname)
 

@@ -47,6 +47,11 @@ main {
     flex-direction: column;
 }
 
+.toverlay {
+    background-color: transparent;
+    z-index: 9999;
+}
+
 
 .tshadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);

@@ -1,8 +1,20 @@
+import { dbConnect } from "@/lib/mongo";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 const stripe = require('stripe')(process.env.STRIPE_SECRET)
 
 export async function POST (request:NextRequest) {
+
+    try {
+        await dbConnect()
+    } catch (err) {
+        console.error('Error connecting to database')
+        return NextResponse.json({
+            message: 'Error connecting to database...'
+        }, {
+            status: 500
+        })
+    }
     const body = await request.text()
     const sig = request.headers.get("stripe-signature")
 
@@ -29,6 +41,9 @@ export async function POST (request:NextRequest) {
                 const session = event.data.object as Stripe.Checkout.Session
 
                 console.info('Checkout successful for session - ', session.id)
+                return NextResponse.json({
+                    session:session
+                })
 
 
                 //add to db

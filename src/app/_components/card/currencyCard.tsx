@@ -35,7 +35,7 @@ export default function CurrencyCard ({products}:CurrencyCardProps) {
                             {price} {/* {item.default_price.currency.toUpperCase()} */}
                             </span>
                         </span>
-                        <BuyCoinsBtn priceId={item.default_price.id}></BuyCoinsBtn>
+                        <BuyCoinsBtn name={item.name} prodId={item.id} priceId={item.default_price.id}></BuyCoinsBtn>
                     </div>
                 )
             })}

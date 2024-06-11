@@ -9,6 +9,8 @@ export async function POST (request:NextRequest) {
         const req = await request.json()
         console.log(req)
         const priceId = req.priceId
+        const prodId = req.prodId
+        const prodName = req.prodName
         const headersList = headers()
         const referer = headersList.get('referer')
         console.log('***referer', referer)
@@ -22,8 +24,13 @@ export async function POST (request:NextRequest) {
                 }
             ],
             mode: 'payment',
-            success_url: `${referer}/?success=true?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url:`${referer}/?cancelled=true?session_id={CHECKOUT_SESSION_ID}`
+            metadata: {
+                prodId: prodId,
+                name: prodName
+
+            },
+            success_url: `${referer}/?success=true&session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url:`${referer}/?cancelled=true&session_id={CHECKOUT_SESSION_ID}`
         })
 
         console.log('stripe session created', session.url)

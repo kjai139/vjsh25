@@ -28,6 +28,7 @@ export default function CurrencyDropdown ({session}:AvatarDropDownProps) {
             if (response.ok) {
                 const data = await response.json()
                 console.log('DATA:', data)
+                setCurrencyAmt(data.coins)
             } else {
                 throw new Error('Something went wrong in getting a response')
             }
