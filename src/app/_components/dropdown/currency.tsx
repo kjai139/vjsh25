@@ -4,6 +4,7 @@ import { RiCoinsLine } from "react-icons/ri";
 import type { Session } from "next-auth";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useCurrency } from "@/app/_context/currencyProvider";
 
 
 interface AvatarDropDownProps {
@@ -14,7 +15,7 @@ export default function CurrencyDropdown ({session}:AvatarDropDownProps) {
 
     const pathname = usePathname()
 
-    const [currencyAmt, setCurrencyAmt] = useState(0)
+    const { currency, setCurrency } = useCurrency()
 
     const getCurrency = async () => {
         try {
@@ -28,7 +29,7 @@ export default function CurrencyDropdown ({session}:AvatarDropDownProps) {
             if (response.ok) {
                 const data = await response.json()
                 console.log('DATA:', data)
-                setCurrencyAmt(data.coins)
+                setCurrency(data.coins)
             } else {
                 throw new Error('Something went wrong in getting a response')
             }
@@ -42,7 +43,7 @@ export default function CurrencyDropdown ({session}:AvatarDropDownProps) {
         if (session) {
             getCurrency()
         } else {
-            setCurrencyAmt(0)
+            setCurrency(0)
         }
     }, [])
 
@@ -52,7 +53,7 @@ export default function CurrencyDropdown ({session}:AvatarDropDownProps) {
         <div>
             <Dropdown>
                 <DropdownTrigger>
-                    <Button variant="light" color="primary" startContent={<RiCoinsLine size={20}></RiCoinsLine>}>$ {currencyAmt}</Button>
+                    <Button variant="light" color="primary" startContent={<RiCoinsLine size={20}></RiCoinsLine>}>$ {currency}</Button>
 
                     
                 </DropdownTrigger>

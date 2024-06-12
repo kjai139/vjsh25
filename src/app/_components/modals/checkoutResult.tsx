@@ -1,5 +1,6 @@
 "use client"
 
+import { useCurrency } from "@/app/_context/currencyProvider"
 import { updateCurrency } from "@/app/actions"
 import { Button } from "@nextui-org/react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
@@ -15,6 +16,7 @@ export default function CheckoutResult () {
     const success = searchParams.get('success')
     const cancelled = searchParams.get('cancelled')
     const [message, setMessage] = useState('')
+    const { currency, setCurrency} = useCurrency()
 
     
 
@@ -22,22 +24,32 @@ export default function CheckoutResult () {
     
 
     useEffect(() => {
-        if (success && session_id) {
-            setMessage('Payment Successful')
-            console.log('Payment Success')
+        if (session_id) {
+            
 
             const updateCur = async () => {
-                const result = await updateCurrency(session_id)
+                const result:any = await updateCurrency(session_id)
                 console.log(result)
+                if (result === typeof Number) {
+                    setCurrency(result.coins)
+                } else {
+                    console.error(result)
+                }
+                
 
             }
-            updateCur()
+            if (success) {
+                setMessage('Payment Successful')
+                console.log('Payment Success')
+                
+            }
+            
 
         } else if (cancelled) {
             setMessage('Payment Cancelled')
             console.log('Payment Cancelled')
         }
-    }, [success, cancelled, session_id])
+    }, [session_id, cancelled])
 
     const closeModal = () => {
         setMessage('')

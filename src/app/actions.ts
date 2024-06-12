@@ -22,16 +22,33 @@ export async function updateCurrency(sessionId:string) {
             throw new Error('User email does not exist')
         }
 
-        console.log('session from sA:', session)
+        console.log('stripeSession from server action:', stripeSession)
+        const existingTransaction = await transModel.findOne({
+            stripeSessionId: stripeSession.id
+        })
+
+        if (existingTransaction) {
+            console.log('TRANSACTION OF SESSION ALREADY EXIST')
+            return {
+                coins: existingTransaction.amount / 100
+            }
+        }
         const transaction = new transModel({
             stripeSessionId: stripeSession.id,
             userRef: user._id,
             amount: stripeSession.amount_subtotal,
-            coins: stripeSession.amount_subtotal
+            coins: stripeSession.amount_subtotal,
+            productId: stripeSession.metadata.prodId
         })
         await transaction.save()
         console.log(`New transaction created for ${user._id}`)
-        // add the coin calculation in user wip
+        const coins = stripeSession.amount_subtotal / 100
+        user.coins += coins
+        await user.save()
+        console.log('User coins updated')
+        return {
+            coins:coins
+        }
 
     } catch (err) {
         console.error(err)
