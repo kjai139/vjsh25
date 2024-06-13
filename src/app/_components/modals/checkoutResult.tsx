@@ -30,7 +30,7 @@ export default function CheckoutResult () {
             const updateCur = async () => {
                 const result:any = await updateCurrency(session_id)
                 console.log(result)
-                if (result === typeof Number) {
+                if (result.coins) {
                     setCurrency(result.coins)
                 } else {
                     console.error(result)
@@ -41,6 +41,7 @@ export default function CheckoutResult () {
             if (success) {
                 setMessage('Payment Successful')
                 console.log('Payment Success')
+                updateCur()
                 
             }
             
@@ -61,9 +62,9 @@ export default function CheckoutResult () {
         <>
         {message ?
         <div className="absolute flex top-0 left-0 items-center justify-center overlay w-full h-screen">
-            <div className="relative">
+            <div className="relative bg-default p-8 rounded shadow">
                 <h1>{message}</h1>
-                <Button onPress={() => closeModal()}>Close</Button>
+                <Button className="mt-4" color="primary" fullWidth onPress={() => closeModal()}>Close</Button>
             </div>
         </div>
         : null

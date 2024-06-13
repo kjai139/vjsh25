@@ -30,7 +30,7 @@ export async function updateCurrency(sessionId:string) {
         if (existingTransaction) {
             console.log('TRANSACTION OF SESSION ALREADY EXIST')
             return {
-                coins: existingTransaction.amount / 100
+                coins: user.coins
             }
         }
         const transaction = new transModel({
@@ -47,7 +47,7 @@ export async function updateCurrency(sessionId:string) {
         await user.save()
         console.log('User coins updated')
         return {
-            coins:coins
+            coins: user.coins
         }
 
     } catch (err) {
