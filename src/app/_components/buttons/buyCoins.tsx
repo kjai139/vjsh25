@@ -1,8 +1,8 @@
 "use client"
 
 import { Button } from "@nextui-org/react"
-import getStripe from "@/lib/stripe"
 import { useState } from "react"
+import { signOut } from "next-auth/react"
 
 
 interface BuyCoinsBtnProps {
@@ -16,6 +16,8 @@ interface BuyCoinsBtnProps {
 
 export default function BuyCoinsBtn ({priceId, prodId, name}:BuyCoinsBtnProps) {
     const [errorMsg, setErrorMsg] = useState('')
+    /* const { data: session, update} = useSession() */
+    
     const handleBuy = async (priceId:string) => {
         const data = {
             priceId: priceId,
@@ -41,6 +43,12 @@ export default function BuyCoinsBtn ({priceId, prodId, name}:BuyCoinsBtnProps) {
             } else {
                 const data = await response.json()
                 setErrorMsg(data.message)
+                if (response.status === 401) {
+                    await signOut()
+                }
+                
+                
+                
 
             }
         } catch (err:any) {

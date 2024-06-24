@@ -1,4 +1,4 @@
-import NextAuth, { User, type DefaultSession} from "next-auth";
+import NextAuth, { Session, User, type DefaultSession} from "next-auth";
 import { JWT } from "next-auth/jwt";
 import Github from "next-auth/providers/github";
 import google from "next-auth/providers/google";
@@ -24,6 +24,10 @@ declare module "next-auth/jwt" {
 
 export const config = {
     providers: [Github, google],
+    /* session: {  
+        maxAge: 10, set maxage here default is 1 month, have to set up refresh token rotation  otherwise
+
+    }, */
     callbacks: {
         jwt({ token, user }: {token: JWT, user?:User}) {
             if (user) {
@@ -31,16 +35,16 @@ export const config = {
             }
             return token
         },
-        session({session, token}:{session: Session, token:JWT}) {
-            /* session.user.id = token.id
-            return session */
-            return {
+        session({session, token}:{session:Session, token:JWT}) {
+            session.user.id = token.id as string
+            return session
+            /* return {
                 ...session,
                 user: {
                     ...session.user,
                     id: token.id
                 }
-            }
+            } */
         }
     }
     /* jwt is called whenever jwt is created or updated, and session is called when api/session is called usesession or getsession, exposes to client */
