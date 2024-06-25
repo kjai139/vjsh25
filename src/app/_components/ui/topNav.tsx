@@ -1,7 +1,6 @@
 import {  Navbar,   NavbarBrand,   NavbarContent,   NavbarItem,   NavbarMenuToggle,  NavbarMenu,  NavbarMenuItem} from "@nextui-org/navbar";
 
 import SignInBtn from "../buttons/signInBtn";
-import { useEffect } from "react";
 import AvatarDropdown from "../dropdown/avatar";
 import type { Session } from "next-auth";
 import CurrencyDropdown from "../dropdown/currency";
@@ -35,7 +34,7 @@ export default function TopNav ({session}: {session: Session | null}) {
 
                 </NavbarMenuToggle>
             <NavbarBrand>
-                ACME
+                LOGO
             </NavbarBrand>
             </NavbarContent>
             <NavbarContent>

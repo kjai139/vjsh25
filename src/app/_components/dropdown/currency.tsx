@@ -16,6 +16,7 @@ export default function CurrencyDropdown ({session}:AvatarDropDownProps) {
     const pathname = usePathname()
 
     const { currency, setCurrency } = useCurrency()
+    const [isLoading, setIsLoading] = useState(false)
 
     const getCurrency = async () => {
         try {
@@ -30,6 +31,7 @@ export default function CurrencyDropdown ({session}:AvatarDropDownProps) {
                 const data = await response.json()
                 console.log('DATA:', data)
                 setCurrency(data.coins)
+                setIsLoading(true)
             } else {
                 throw new Error('Something went wrong in getting a response')
             }
@@ -43,6 +45,7 @@ export default function CurrencyDropdown ({session}:AvatarDropDownProps) {
         if (session) {
             getCurrency()
         } else {
+            console.log('No current session')
             setCurrency(0)
         }
     }, [])
@@ -51,21 +54,24 @@ export default function CurrencyDropdown ({session}:AvatarDropDownProps) {
 
     return (
         <div>
+            {session?.user && isLoading &&  
             <Dropdown>
-                <DropdownTrigger>
-                    <Button variant="light" color="primary" startContent={<RiCoinsLine size={20}></RiCoinsLine>}>$ {currency}</Button>
+            <DropdownTrigger>
+                <Button variant="light" color="primary" startContent={<RiCoinsLine size={20}></RiCoinsLine>}>$ {currency}</Button>
 
-                    
-                </DropdownTrigger>
-                <DropdownMenu aria-label="User Currency Actions">
-                    <DropdownItem textValue="Link to buy coins" aria-label="Link to Dashboard">
-                        <Link color="foreground" href="/user/currency" isDisabled={pathname === '/user/currency'}>
-                            Buy coins
-                        </Link>
+                
+            </DropdownTrigger>
+            <DropdownMenu aria-label="User Currency Actions">
+                <DropdownItem textValue="Link to buy coins" aria-label="Link to Dashboard">
+                    <Link color="foreground" href="/user/currency" isDisabled={pathname === '/user/currency'}>
+                        Buy coins
+                    </Link>
 
-                    </DropdownItem>
-                </DropdownMenu>
-            </Dropdown>
+                </DropdownItem>
+            </DropdownMenu>
+        </Dropdown>
+            }
+            
         </div>
     )
 }
